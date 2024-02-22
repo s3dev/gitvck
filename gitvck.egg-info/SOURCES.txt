@@ -1,0 +1,9 @@
+LICENSE
+setup.py
+gitvck/_version.py
+gitvck/gitvck.py
+gitvck.egg-info/PKG-INFO
+gitvck.egg-info/SOURCES.txt
+gitvck.egg-info/dependency_links.txt
+gitvck.egg-info/requires.txt
+gitvck.egg-info/top_level.txt
