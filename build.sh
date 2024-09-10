@@ -16,12 +16,12 @@ printf "Done.\n\n"
 
 # Create requirements file.
 printf "Creating the requirements file ...\n"
-pipreqs --force --use-local ./
+preqs --replace .
 printf "Done.\n\n"
 
 # Create the wheel install file.
 printf "Creating source dist ...\n"
-./setup.py sdist bdist_wheel
+python -m build --sdist --wheel --no-isolation
 printf "Done.\n\n"
 
 printf "Setup complete.\n\n"

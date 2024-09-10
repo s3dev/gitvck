@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>gitvck Library Documentation &mdash; gitvck - v2.0.0.dev1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=eefd3ab3"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Library API Documentation" href="library.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            gitvck
+              <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2.0.0.dev1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="library.html">Library API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">gitvck</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">gitvck Library Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gitvck-library-documentation">
+<h1>gitvck Library Documentation<a class="headerlink" href="#gitvck-library-documentation" title="Link to this heading"></a></h1>
+<nav class="contents local" id="page-contents">
+<p class="topic-title">Page Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id3">Overview</a></p></li>
+<li><p><a class="reference internal" href="#installation" id="id4">Installation</a></p></li>
+<li><p><a class="reference internal" href="#using-the-library" id="id5">Using the Library</a></p></li>
+<li><p><a class="reference internal" href="#troubleshooting" id="id6">Troubleshooting</a></p></li>
+<li><p><a class="reference internal" href="#documentation-contents" id="id7">Documentation Contents</a></p></li>
+<li><p><a class="reference internal" href="#indices-and-tables" id="id8">Indices and Tables</a></p></li>
+</ul>
+</nav>
+<section id="overview">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Overview</a><a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">gitvck</span></code> library is a CPython project which is designed to help
+ensure the latest version of a critical library is being used by your
+project.</p>
+<p>Sometimes a project relies on the <em>latest</em> version of an underlying
+library. The <code class="docutils literal notranslate"><span class="pre">gitvck</span></code> library is designed to run in the background on
+program startup and check if the version of a critical library is the
+latest version available. If the critical library being imported is not
+the latest, the user is alerted that a later version is available. If the
+latest version is already being used, the test ends silently.</p>
+<p>However, this is a <em>notification-only</em> service. The user is <em>not</em>
+prevented from carrying on.</p>
+<p>If you have any questions that are not covered by this documentation, or
+if you spot any bugs, issues or have any recommendations, please feel free
+to <a class="reference internal" href="contact.html#contact-us"><span class="std std-ref">contact us</span></a>.</p>
+</section>
+<section id="installation">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Installation</a><a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>The easiest way to install <code class="docutils literal notranslate"><span class="pre">gitvck</span></code> from <a class="reference external" href="https://pypi.org/project/gitvck">PyPI</a> is using <code class="docutils literal notranslate"><span class="pre">pip</span></code>
+<em>after</em> activating your virtual environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">gitvck</span>
+</pre></div>
+</div>
+</section>
+<section id="using-the-library">
+<span id="id1"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink">Using the Library</a><a class="headerlink" href="#using-the-library" title="Link to this heading"></a></h2>
+<p>This documentation suite contains detailed explanation and example usage
+for each of the library’s importable modules. For detailed documentation,
+usage examples and links the source code itself, please refer to the
+<a class="reference internal" href="library.html#library-api"><span class="std std-ref">Library API Documentation</span></a> page.</p>
+<p>If there is a specific module or method which you cannot find, a
+<strong>search</strong> field is built into the navigation bar to the left.</p>
+<section id="quickstart">
+<h3>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading"></a></h3>
+<p>To demonstrate how easy it is to get up and running, the template below
+can be copied and pasted into your program’s primary <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>
+module. When your program starts up, the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> module is run,
+and performs the version check in the background.</p>
+<p>To verify the version of a critical library against GitHub use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gitvck</span> <span class="kn">import</span> <span class="n">gitvck</span>
+<span class="kn">from</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;.</span><span class="n">_version</span> <span class="kn">import</span> <span class="nn">__version__</span>
+
+<span class="n">gitvck</span><span class="o">.</span><span class="n">VersionCheck</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;project-spam&#39;</span><span class="p">,</span>
+                    <span class="n">source</span><span class="o">=</span><span class="s1">&#39;git&#39;</span><span class="p">,</span>
+                    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;https://github.com/s3dev/project-spam&#39;</span><span class="p">,</span>
+                    <span class="n">version</span><span class="o">=</span><span class="n">__version__</span><span class="p">)</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>More example templates can be found in the <code class="docutils literal notranslate"><span class="pre">gitvck</span></code> module documentation
+on the <a class="reference internal" href="library.html#library-api"><span class="std std-ref">Library API Documentation</span></a> page.</p>
+</section>
+<section id="sources">
+<h3>Sources<a class="headerlink" href="#sources" title="Link to this heading"></a></h3>
+<p>The following code configuration sources can be accessed by <code class="docutils literal notranslate"><span class="pre">gitvck</span></code>:</p>
+<ul class="simple">
+<li><p>PyPI</p></li>
+<li><p>GitHub</p></li>
+<li><p>Git (a local or remote repository, accessed through a filesystem)</p></li>
+</ul>
+<p>Guidance for using these various sources can be found in the <code class="docutils literal notranslate"><span class="pre">gitvck</span></code>
+module documentation on the <a class="reference internal" href="library.html#library-api"><span class="std std-ref">Library API Documentation</span></a> page.</p>
+</section>
+</section>
+<section id="troubleshooting">
+<span id="id2"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">Troubleshooting</a><a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p>No guidance at this time.</p>
+</section>
+<section id="documentation-contents">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Documentation Contents</a><a class="headerlink" href="#documentation-contents" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library.html">Library API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact Us</a></li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Indices and Tables</a><a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+</ul>
+<p class="rubric">Footnotes</p>
+<p>Last updated: 11 Sep 2024</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="library.html" class="btn btn-neutral float-right" title="Library API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 | s3dev | version 2.0.0.dev1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

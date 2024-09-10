@@ -1,0 +1,56 @@
+
+# A way to ensure critical libraries are up-to-date
+
+[![PyPI - Version](https://img.shields.io/pypi/v/gitvck?style=flat-square)](https://pypi.org/project/gitvck)
+[![PyPI - Implementation](https://img.shields.io/pypi/implementation/gitvck?style=flat-square)](https://pypi.org/project/gitvck)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/gitvck?style=flat-square)](https://pypi.org/project/gitvck)
+[![PyPI - Status](https://img.shields.io/pypi/status/gitvck?style=flat-square)](https://pypi.org/project/gitvck)
+[![Static Badge](https://img.shields.io/badge/tests-passing-brightgreen?style=flat-square)](https://pypi.org/project/gitvck)
+[![Static Badge](https://img.shields.io/badge/code_coverage-100%25-brightgreen?style=flat-square)](https://pypi.org/project/gitvck)
+[![Static Badge](https://img.shields.io/badge/pylint_analysis-100%25-brightgreen?style=flat-square)](https://pypi.org/project/gitvck)
+[![Documentation Status](https://readthedocs.org/projects/gitvck/badge/?version=latest&style=flat-square)](https://gitvck.readthedocs.io/en/latest/)
+[![PyPI - License](https://img.shields.io/pypi/l/virtualenv?style=flat-square)](https://opensource.org/licenses/MIT)
+[![PyPI - Wheel](https://img.shields.io/pypi/wheel/gitvck?style=flat-square)](https://pypi.org/project/gitvck)
+
+The ``gitvck`` library is a CPython project which is designed to help ensure the latest version of a critical library is being used by your project.
+
+Sometimes a project relies on the *latest* version of an underlying library. The ``gitvck`` library is designed to run in the background on program startup and check if the version of a critical library is the latest version available. If the critical library being imported is not the latest, the user is alerted that a later version is available. If the latest version is already being used, the test ends silently.
+
+However, this is a *notification-only* service. The user is *not* prevented from carrying on.
+
+If you have any questions that are not covered by this documentation, or if you spot any bugs, issues or have any recommendations, please feel free to [contact us](https://gitvck.readthedocs.io/en/latest/contact.html).
+
+
+## Installation
+For most users, the easiest way is probably to install the latest version hosted on [PyPI](https://pypi.org/project/gitvck/), *after* activating the appropriate virtual environment.
+
+    pip install gitvck
+
+
+## Using the Library
+The [documentation suite](https://gitvck.readthedocs.io/en/latest/index.html) contains detailed explanation and example usage for each of the library's importable modules. For detailed documentation, usage examples and links the source code itself, please refer to the [Library API](https://gitvck.readthedocs.io/en/latest/library.html) page.
+
+### Quickstart
+To demonstrate how easy it is to get up and running, the template below can be copied and pasted into your program's primary ``__init__.py`` module. When your program starts up, the ``__init__.py`` module is run, and performs the version check in the background.
+
+To verify the version of a critical library against GitHub use:
+
+    from gitvck import gitvck
+    from <project>._version import __version__
+
+    gitvck.VersionCheck(name='project-spam',
+                        source='git',
+                        path='https://github.com/s3dev/project-spam',
+                        version=__version__).test()
+
+More example templates can be found in the ``gitvck`` [module documentation](https://gitvck.readthedocs.io/en/latest/gitvck.html) page.
+
+### Sources
+The following code configuration sources can be accessed by ``gitvck``:
+
+- PyPI
+- GitHub
+- Git (a local or remote repository, accessed through a filesystem)
+
+Guidance for using these various sources can be found in the ``gitvck`` [module documentation](https://gitvck.readthedocs.io/en/latest/gitvck.html) page.
+

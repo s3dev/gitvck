@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>gitvck &mdash; gitvck - v2.0.0.dev1 Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/s5defs-rules.css?v=0345028d" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=eefd3ab3"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Change Log" href="changelog.html" />
+    <link rel="prev" title="Library API Documentation" href="library.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gitvck
+              <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2.0.0.dev1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Library API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">gitvck</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gitvck.VersionCheck"><code class="docutils literal notranslate"><span class="pre">VersionCheck</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._SOURCES"><code class="docutils literal notranslate"><span class="pre">VersionCheck._SOURCES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck.__init__"><code class="docutils literal notranslate"><span class="pre">VersionCheck.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._compare"><code class="docutils literal notranslate"><span class="pre">VersionCheck._compare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._get_version_external"><code class="docutils literal notranslate"><span class="pre">VersionCheck._get_version_external()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._get_version_from_git"><code class="docutils literal notranslate"><span class="pre">VersionCheck._get_version_from_git()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._get_version_from_pypi"><code class="docutils literal notranslate"><span class="pre">VersionCheck._get_version_from_pypi()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._get_version_internal"><code class="docutils literal notranslate"><span class="pre">VersionCheck._get_version_internal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._new_version_available"><code class="docutils literal notranslate"><span class="pre">VersionCheck._new_version_available()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._parse_git_output"><code class="docutils literal notranslate"><span class="pre">VersionCheck._parse_git_output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._verify_args"><code class="docutils literal notranslate"><span class="pre">VersionCheck._verify_args()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._verify_version_numbers"><code class="docutils literal notranslate"><span class="pre">VersionCheck._verify_version_numbers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._version_is_valid"><code class="docutils literal notranslate"><span class="pre">VersionCheck._version_is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck.test"><code class="docutils literal notranslate"><span class="pre">VersionCheck.test()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact Us</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gitvck</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library.html">Library API Documentation</a></li>
+      <li class="breadcrumb-item active">gitvck</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-gitvck">
+<span id="gitvck"></span><h1>gitvck<a class="headerlink" href="#module-gitvck" title="Link to this heading"></a></h1>
+<dl class="field-list">
+<dt class="field-odd">Purpose<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This project-generic Git version-check (gitvck) module is
+used to test your project’s version against the latest
+version available in source configuration.</p>
+<p>The version can be checked against PyPI, GitHub or even a
+local (offline) Git repository.</p>
+<p>If the project’s version number is behind the version number
+obtained from the source, the user is notified on import, as
+a <strong>notification-only</strong> service. This check is <em>not</em> designed
+to prevent the user from carrying on.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>A note for using a Git(Hub) repository:</strong></p>
+<p>When comparing version against a Git repository, this
+tool uses <strong>tags</strong> to determine the project’s version.
+Therefore, the tag on the release must be the version
+number and follow the convention defined in the
+<em>Version scheme</em> section of <a class="reference external" href="https://www.python.org/dev/peps/pep-440/#version-scheme">PEP-440</a>.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[N!]N(.N)*[{a|b|rc}N][.postN][.devN]
+</pre></div>
+</div>
+<p>Public version identifiers are separated into up to five
+segments:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Epoch segment: N!</p></li>
+<li><p>Release segment: N(.N)*</p></li>
+<li><p>Pre-release segment: {a|b|rc}N</p></li>
+<li><p>Post-release segment: .postN</p></li>
+<li><p>Development release segment: .devN</p></li>
+</ul>
+</div></blockquote>
+</div>
+</dd>
+<dt class="field-even">Platform<span class="colon">:</span></dt>
+<dd class="field-even"><p>Linux/Windows | Python 3.8+</p>
+</dd>
+<dt class="field-odd">Developer<span class="colon">:</span></dt>
+<dd class="field-odd"><p>J Berendt</p>
+</dd>
+<dt class="field-even">Email<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:support&#37;&#52;&#48;s3dev&#46;uk">support<span>&#64;</span>s3dev<span>&#46;</span>uk</a></p>
+</dd>
+<dt class="field-odd">Deployment<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On deployment, simply copy/paste one of the following code
+examples into the project’s primary <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> module.
+When the project is imported, the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> module is
+run, thus executing the version check.</p>
+</dd>
+<dt class="field-even">Examples<span class="colon">:</span></dt>
+<dd class="field-even"><p>Check the version against a <em>local Git repository</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gitvck</span> <span class="kn">import</span> <span class="n">gitvck</span>
+<span class="kn">from</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;.</span><span class="n">_version</span> <span class="kn">import</span> <span class="nn">__version__</span>
+
+<span class="n">gitvck</span><span class="o">.</span><span class="n">VersionCheck</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;project-spam&#39;</span><span class="p">,</span>
+                    <span class="n">source</span><span class="o">=</span><span class="s1">&#39;git&#39;</span><span class="p">,</span>
+                    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;/path/to/git/project-spam&#39;</span><span class="p">,</span>
+                    <span class="n">version</span><span class="o">=</span><span class="n">__version__</span><span class="p">)</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Check the version against <em>GitHub</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gitvck</span> <span class="kn">import</span> <span class="n">gitvck</span>
+<span class="kn">from</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;.</span><span class="n">_version</span> <span class="kn">import</span> <span class="nn">__version__</span>
+
+<span class="n">gitvck</span><span class="o">.</span><span class="n">VersionCheck</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;project-spam&#39;</span><span class="p">,</span>
+                    <span class="n">source</span><span class="o">=</span><span class="s1">&#39;git&#39;</span><span class="p">,</span>
+                    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;https://github.com/s3dev/project-spam&#39;</span><span class="p">,</span>
+                    <span class="n">version</span><span class="o">=</span><span class="n">__version__</span><span class="p">)</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Check the version against <em>PyPI</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gitvck</span> <span class="kn">import</span> <span class="n">gitvck</span>
+<span class="kn">from</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;.</span><span class="n">_version</span> <span class="kn">import</span> <span class="nn">__version__</span>
+
+<span class="n">gitvck</span><span class="o">.</span><span class="n">VersionCheck</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;project-spam&#39;</span><span class="p">,</span>
+                    <span class="n">source</span><span class="o">=</span><span class="s1">&#39;pypi&#39;</span><span class="p">,</span>
+                    <span class="n">version</span><span class="o">=</span><span class="n">__version__</span><span class="p">)</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Check the version against <em>PyPI</em>, using the version from the
+<em>installed</em> library.</p>
+<p>Notice the template below passes <code class="docutils literal notranslate"><span class="pre">None</span></code> into the
+<code class="docutils literal notranslate"><span class="pre">version</span></code> argument. This instructs <code class="docutils literal notranslate"><span class="pre">gitvck</span></code> to collect
+the internal version from the <em>installed</em> library using
+<code class="docutils literal notranslate"><span class="pre">importlib</span></code>, rather than from the local project’s
+<code class="docutils literal notranslate"><span class="pre">_version.py</span></code> file.</p>
+<p>This variation can be used with any of the templates above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gitvck</span> <span class="kn">import</span> <span class="n">gitvck</span>
+
+<span class="n">gitvck</span><span class="o">.</span><span class="n">VersionCheck</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;project-spam&#39;</span><span class="p">,</span>
+                    <span class="n">source</span><span class="o">=</span><span class="s1">&#39;pypi&#39;</span><span class="p">,</span>
+                    <span class="n">version</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="gitvck.VersionCheck">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gitvck.</span></span><span class="sig-name descname"><span class="pre">VersionCheck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitvck.html#VersionCheck"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck" title="Link to this definition"></a></dt>
+<dd><p>Compare a project’s version against the version in source
+configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the project.</p></li>
+<li><p><strong>source</strong> (<em>str</em>) – Source against which the version is checked.
+Options: ‘git’ or ‘pypi’. If ‘git’, the <code class="docutils literal notranslate"><span class="pre">path</span></code> argument
+must be populated. If ‘pypi’, the <code class="docutils literal notranslate"><span class="pre">name</span></code> argument is used
+to query the PyPI register.</p></li>
+<li><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – Explicit path to the project’s local Git
+repository, or the GitHub URL to the project. If referencing
+PyPI, this can be left as <code class="docutils literal notranslate"><span class="pre">None</span></code>. Defaults to None.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Version of the project.
+If the version of the <em>installed</em> library is to be tested,
+this argument should be left as <code class="docutils literal notranslate"><span class="pre">None</span></code>. Otherwise, the
+<code class="docutils literal notranslate"><span class="pre">__version__</span></code> variable from the project’s <code class="docutils literal notranslate"><span class="pre">_version.py</span></code>
+file can be used. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This class is simply a <em>warning</em> mechanism. Processes are not
+stopped nor prevented, once preliminary internal checks pass. If
+the version test fails, the user is simply warned and allowed to
+carry on.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gitvck.VersionCheck._SOURCES">
+<span class="sig-name descname"><span class="pre">_SOURCES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('git',</span> <span class="pre">'pypi')</span></em><a class="headerlink" href="#gitvck.VersionCheck._SOURCES" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gitvck.VersionCheck.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitvck.html#VersionCheck.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck.__init__" title="Link to this definition"></a></dt>
+<dd><p>VersionCheck class initialiser.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gitvck.VersionCheck._compare">
+<span class="sig-name descname"><span class="pre">_compare</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._compare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._compare" title="Link to this definition"></a></dt>
+<dd><p>Compare the internal and external version numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>False if the internal version is behind (less than)
+the external version. Otherwise, True.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gitvck.VersionCheck._get_version_external">
+<span class="sig-name descname"><span class="pre">_get_version_external</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._get_version_external"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._get_version_external" title="Link to this definition"></a></dt>
+<dd><p>Get the version from the specified external source.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Key<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>git</strong>: Use the <code class="docutils literal notranslate"><span class="pre">path</span></code> argument to obtain and parse the
+latest <em>tag</em> from Git(Hub).</p></li>
+<li><p><strong>pypi</strong>: Use the <code class="docutils literal notranslate"><span class="pre">name</span></code> argument to query PyPI for the
+latest version held.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The collected version is stored into the <code class="xref py py-attr docutils literal notranslate"><span class="pre">_extvers</span></code>
+attribute by the appropriate collection method:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#gitvck.VersionCheck._get_version_from_git" title="gitvck.VersionCheck._get_version_from_git"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_version_from_git()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#gitvck.VersionCheck._get_version_from_pypi" title="gitvck.VersionCheck._get_version_from_pypi"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_version_from_pypi()</span></code></a></p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the <code class="xref py py-attr docutils literal notranslate"><span class="pre">_extvers</span></code> attribute is now
+populated. Otherwise, False.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gitvck.VersionCheck._get_version_from_git">
+<span class="sig-name descname"><span class="pre">_get_version_from_git</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._get_version_from_git"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._get_version_from_git" title="Link to this definition"></a></dt>
+<dd><p>Collect and parse the latest tag from Git(Hub).</p>
+<p>To obtain the tag(s), the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">ls-remote</span></code> command is used.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This method relies on the version number being the commit’s
+<em>tag</em>, and follows the versioning scheme found in PEP-440.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gitvck.VersionCheck._get_version_from_pypi">
+<span class="sig-name descname"><span class="pre">_get_version_from_pypi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._get_version_from_pypi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._get_version_from_pypi" title="Link to this definition"></a></dt>
+<dd><p>Collect and parse the latest tag from PyPI.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This method queries the PyPI register and returns the version
+of the <em>latest</em> project.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gitvck.VersionCheck._get_version_internal">
+<span class="sig-name descname"><span class="pre">_get_version_internal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._get_version_internal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._get_version_internal" title="Link to this definition"></a></dt>
+<dd><p>Collect the project’s version to be compared.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">version</span></code> argument is <code class="docutils literal notranslate"><span class="pre">None</span></code>, the version for the
+<em>installed</em> project is obtained using <code class="docutils literal notranslate"><span class="pre">importlib.metadata</span></code>.
+Otherwise, the string provided to the <code class="docutils literal notranslate"><span class="pre">version</span></code> argument is
+used.</p>
+<p>The internal version is stored into the <code class="xref py py-attr docutils literal notranslate"><span class="pre">_vers</span></code> attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the <code class="xref py py-attr docutils literal notranslate"><span class="pre">_vers</span></code> attribute is now populated.
+Otherwise, False.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gitvck.VersionCheck._new_version_available">
+<span class="sig-name descname"><span class="pre">_new_version_available</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._new_version_available"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._new_version_available" title="Link to this definition"></a></dt>
+<dd><p>Alert the user that a new version is available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gitvck.VersionCheck._parse_git_output">
+<span class="sig-name descname"><span class="pre">_parse_git_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._parse_git_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._parse_git_output" title="Link to this definition"></a></dt>
+<dd><p>Parse the output from the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">ls-remote</span></code> command.</p>
+<p>To keep the project OS-agnostic, the parsing of the tag
+collection command is parsed here, rather than during the
+subprocess session.</p>
+<p>Specifically, this method extracts the last field from the last
+line of output. This will be the latest tag from the Git
+repository.</p>
+<p>The tag (hopefully a version!) is stored into the
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">_extvers</span></code> attribute. Before the versions are compared,
+the version is verified by the <a class="reference internal" href="#gitvck.VersionCheck._verify_version_numbers" title="gitvck.VersionCheck._verify_version_numbers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_verify_version_numbers()</span></code></a>
+method, in the event the tag is not a version number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>bytes</em>) – Bytestring returned from the sub-process
+call’s <code class="docutils literal notranslate"><span class="pre">stdout</span></code> stream.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gitvck.VersionCheck._verify_args">
+<span class="sig-name descname"><span class="pre">_verify_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._verify_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._verify_args" title="Link to this definition"></a></dt>
+<dd><p>Verify the class arguments are valid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – Raised if the provided source is invalid, or
+    a source of ‘git’ is provided and the <code class="docutils literal notranslate"><span class="pre">path</span></code> argument is
+    <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the arguments are valid, otherwise a
+RuntimeError is raised.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gitvck.VersionCheck._verify_version_numbers">
+<span class="sig-name descname"><span class="pre">_verify_version_numbers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._verify_version_numbers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._verify_version_numbers" title="Link to this definition"></a></dt>
+<dd><p>Verify the version numbers are valid according to PEP-440.</p>
+<p>Both the internal and external version numbers are tested.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if <em>both</em> version numbers are valid, otherwise
+False.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gitvck.VersionCheck._version_is_valid">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_version_is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._version_is_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._version_is_valid" title="Link to this definition"></a></dt>
+<dd><p>Verify a version string is valid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Implementation<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This test calls the <code class="xref py py-func docutils literal notranslate"><span class="pre">packaging.version.parse()</span></code> function,
+wrapped in a <code class="docutils literal notranslate"><span class="pre">try/except</span></code> block, to verify the version
+string.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>version</strong> (<em>str</em>) – Version string to be tested.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the version string is valid, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gitvck.VersionCheck.test">
+<span class="sig-name descname"><span class="pre">test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gitvck.html#VersionCheck.test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck.test" title="Link to this definition"></a></dt>
+<dd><p>Test the version numbers between the library and its source.</p>
+<p>If the version of the library is <em>behind</em> the source, the user
+is alerted. Otherwise, no further action is taken.</p>
+<p>The following processing steps are carried out by this test:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Verify the arguments are valid.</p></li>
+<li><p>Get the version number for the internal project.</p></li>
+<li><p>Get the version number from the project’s configured
+source.</p></li>
+<li><p>Verify the two version numbers are valid per PEP-440.</p></li>
+<li><p>Compare the internal and external version numbers.</p></li>
+<li><p>Notify the user if the version of the library is behind
+the source.</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="library.html" class="btn btn-neutral float-left" title="Library API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Change Log" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 | s3dev | version 2.0.0.dev1.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

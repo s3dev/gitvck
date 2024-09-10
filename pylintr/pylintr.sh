@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #-----------------------------------------------------------------------
 # Prog:     pylintr.sh
-# Version:  0.4.0
+# Version:  0.4.1
 # Desc:     This script walks down a project tree searching for all
 #           *.py files and runs pylint over each file, using the default
 #           pylint config file and stores the report to the defined
@@ -48,6 +48,8 @@
 #                              which are passed into pylint.
 #                              ** NOTE: This version of the rcfile works 
 #                              with pylint 2.14+. ** 
+# 20.03.24  J. Berendt  0.4.1  Added README.md and LICENSE files in 
+#                              preparation for uploading to GitHub.
 #-----------------------------------------------------------------------
 
 EXT=".plr"

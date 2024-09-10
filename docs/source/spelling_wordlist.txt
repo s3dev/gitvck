@@ -1,0 +1,11 @@
+Berendt
+Bytestring
+CPython
+devN
+filesystem
+initialiser
+postN
+Pre
+pypi
+Quickstart
+rc
