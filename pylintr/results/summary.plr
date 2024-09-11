@@ -2,5 +2,8 @@ Pylint Summary:
 ------------------------
 gitvck_changelog.plr:
 gitvck_gitvck.plr: 10.00/10
+testlibs_msgs.plr: 10.00/10
+tests_base.plr: 10.00/10
+tests_test_gitvck.plr: 10.00/10
 ------------------------
-Run date: Wed 11 Sep 09:20:22 BST 2024
+Run date: Wed 11 Sep 16:51:13 BST 2024

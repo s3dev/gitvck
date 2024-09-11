@@ -103,11 +103,11 @@
 """
 # pylint: disable=wrong-import-order
 
-import importlib
-import packaging
+import packaging.version as pkgversion  # Required to address packaging import 'bug'.
 import requests
 import subprocess as sp
 import traceback
+from importlib import metadata
 from utils4.user_interface import ui
 
 
@@ -149,7 +149,7 @@ class VersionCheck:
         self._vers = version  # Project version.
         self._extvers = None  # Version obtained from Git or PyPI.
 
-    def test(self):
+    def test(self) -> bool:
         """Test the version numbers between the library and its source.
 
         If the version of the library is *behind* the source, the user
@@ -166,16 +166,23 @@ class VersionCheck:
             - Notify the user if the version of the library is behind
               the source.
 
+        Returns:
+            bool: True if the versions compared successfully and the
+            source is not ahead of the tested library, otherwise False.
+            The return value is used by the testing suite.
+
         """
         # pylint: disable=multiple-statements
         try:
+            s = False
             if self._verify_args():
                 s = self._get_version_internal()
                 if s: s = self._get_version_external()
                 if s: s = self._verify_version_numbers()
-                if s: self._compare()
+                if s: s = self._compare()
         except Exception:
             print('', traceback.format_exc(), sep='\n')
+        return s
 
     def _compare(self) -> bool:
         """Compare the internal and external version numbers.
@@ -185,7 +192,7 @@ class VersionCheck:
             the external version. Otherwise, True.
 
         """
-        if packaging.version.parse(self._vers) < packaging.version.parse(self._extvers):
+        if pkgversion.parse(self._vers) < pkgversion.parse(self._extvers):
             self._new_version_available()
             return False
         return True
@@ -271,10 +278,10 @@ class VersionCheck:
         """
         if self._vers is None:
             try:
-                v = importlib.metadata.version(self._name)
+                v = metadata.version(self._name)
                 if self._version_is_valid(version=v):
                     self._vers = v
-            except importlib.metadata.PackageNotFoundError:
+            except metadata.PackageNotFoundError:
                 msg = (f'\n[ERROR]: The \'{self._name}\' project is not installed. '
                        'Cannot collect version information.')
                 ui.print_warning(msg)
@@ -328,7 +335,7 @@ class VersionCheck:
 
         """
         if not self._src in self._SOURCES:
-            raise RuntimeError(f'Invalid version check source provided: \'{self._src}\'')
+            raise RuntimeError(f'Invalid source argument provided: \'{self._src}\'')
         if self._src == 'git' and self._path is None:
             raise RuntimeError('A path argument must be provided for a \'git\' source.')
         return True
@@ -363,9 +370,9 @@ class VersionCheck:
 
         """
         try:
-            packaging.version.parse(version)
+            pkgversion.parse(version)
             return True
-        except packaging.version.InvalidVersion:
+        except pkgversion.InvalidVersion:
             msg = f'\n[ERROR]: The following version number is invalid: \'{version}\''
             ui.print_warning(msg)
             return False

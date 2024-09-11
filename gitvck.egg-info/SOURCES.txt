@@ -5,8 +5,6 @@ LICENSE
 README.md
 build.sh
 pyproject.toml
-requirements.txt
-dist/gitvck-2.0.0.dev1.tar.gz
 docs/.constants.config
 docs/create.sh
 docs/requirements.txt
@@ -102,3 +100,14 @@ pylintr/pylintr.sh
 pylintr/results/gitvck_changelog.plr
 pylintr/results/gitvck_gitvck.plr
 pylintr/results/summary.plr
+pylintr/results/testlibs_msgs.plr
+pylintr/results/tests_base.plr
+pylintr/results/tests_test_gitvck.plr
+tests/.coverage
+tests/.coveragerc
+tests/__init__.py
+tests/base.py
+tests/coverage.sh
+tests/run.sh
+tests/test_gitvck.py
+tests/testlibs/msgs.py

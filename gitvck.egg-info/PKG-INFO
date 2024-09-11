@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: gitvck
-Version: 2.0.0.dev1
+Version: 2.0.0b1
 Summary: A way to ensure critical libraries are up-to-date.
 Author-email: The Developers <development@s3dev.uk>
 Maintainer-email: The Developers <development@s3dev.uk>
