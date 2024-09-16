@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gitvck &mdash; gitvck - v2.0.0b1 Documentation</title>
+  <title>gitvck &mdash; gitvck - v2.0.1.dev1 Documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -16,7 +16,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=b8f64aa8"></script>
+        <script src="../_static/documentation_options.js?v=feb8027d"></script>
         <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -39,7 +39,7 @@
               <img src="../_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                2.0.0b1
+                2.0.1.dev1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -185,11 +185,13 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># pylint: disable=wrong-import-order</span>
 
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">packaging.version</span> <span class="k">as</span> <span class="nn">pkgversion</span>  <span class="c1"># Required to address packaging import &#39;bug&#39;.</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">subprocess</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">traceback</span>
 <span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">metadata</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
 <span class="kn">from</span> <span class="nn">utils4.user_interface</span> <span class="kn">import</span> <span class="n">ui</span>
 
 
@@ -337,13 +339,14 @@
 <span class="sd">            *tag*, and follows the versioning scheme found in PEP-440.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;ls-remote&#39;</span><span class="p">,</span> <span class="s1">&#39;--tags&#39;</span><span class="p">,</span> <span class="s1">&#39;--refs&#39;</span><span class="p">,</span> <span class="s1">&#39;--sort=version:refname&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">]</span>
-        <span class="k">with</span> <span class="n">sp</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span> <span class="k">as</span> <span class="n">proc</span><span class="p">:</span>
-            <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">proc</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_parse_git_output</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">stdout</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">ui</span><span class="o">.</span><span class="n">print_warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Git error:</span><span class="se">\n</span><span class="si">{</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verify_path_is_valid</span><span class="p">():</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;ls-remote&#39;</span><span class="p">,</span> <span class="s1">&#39;--tags&#39;</span><span class="p">,</span> <span class="s1">&#39;--refs&#39;</span><span class="p">,</span> <span class="s1">&#39;--sort=version:refname&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">]</span>
+            <span class="k">with</span> <span class="n">sp</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span> <span class="k">as</span> <span class="n">proc</span><span class="p">:</span>
+                <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">proc</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_parse_git_output</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">stdout</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">ui</span><span class="o">.</span><span class="n">print_warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Git error:</span><span class="se">\n</span><span class="si">{</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="VersionCheck._get_version_from_pypi">
@@ -383,7 +386,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">v</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">version</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">)</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_version_is_valid</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="n">v</span><span class="p">):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verify_version_is_valid</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="n">v</span><span class="p">):</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_vers</span> <span class="o">=</span> <span class="n">v</span>
             <span class="k">except</span> <span class="n">metadata</span><span class="o">.</span><span class="n">PackageNotFoundError</span><span class="p">:</span>
                 <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[ERROR]: The </span><span class="se">\&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="se">\&#39;</span><span class="s1"> project is not installed. &#39;</span>
@@ -454,6 +457,26 @@
         <span class="k">return</span> <span class="kc">True</span></div>
 
 
+<div class="viewcode-block" id="VersionCheck._verify_path_is_valid">
+<a class="viewcode-back" href="../gitvck.html#gitvck.VersionCheck._verify_path_is_valid">[docs]</a>
+    <span class="k">def</span> <span class="nf">_verify_path_is_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Verify the ``path`` argument is valid.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if the path is a valid URL, or if the filepath</span>
+<span class="sd">            exists. Otherwise, False.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">scheme</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="s1">&#39;https&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">p</span><span class="o">.</span><span class="n">netloc</span> <span class="o">==</span> <span class="s1">&#39;github.com&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[ERROR]: The following path cannot be found: </span><span class="se">\&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="si">}</span><span class="se">\&#39;</span><span class="s1">&#39;</span>
+        <span class="n">ui</span><span class="o">.</span><span class="n">print_warning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
 <div class="viewcode-block" id="VersionCheck._verify_version_numbers">
 <a class="viewcode-back" href="../gitvck.html#gitvck.VersionCheck._verify_version_numbers">[docs]</a>
     <span class="k">def</span> <span class="nf">_verify_version_numbers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -466,14 +489,13 @@
 <span class="sd">            False.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">all</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_version_is_valid</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_vers</span><span class="p">),</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_version_is_valid</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_extvers</span><span class="p">)))</span></div>
+        <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_verify_version_is_valid</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extvers</span><span class="p">)))</span></div>
 
 
-<div class="viewcode-block" id="VersionCheck._version_is_valid">
-<a class="viewcode-back" href="../gitvck.html#gitvck.VersionCheck._version_is_valid">[docs]</a>
+<div class="viewcode-block" id="VersionCheck._verify_version_is_valid">
+<a class="viewcode-back" href="../gitvck.html#gitvck.VersionCheck._verify_version_is_valid">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_version_is_valid</span><span class="p">(</span><span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_verify_version_is_valid</span><span class="p">(</span><span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Verify a version string is valid.</span>
 
 <span class="sd">        :Implementation:</span>
@@ -506,7 +528,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024 | s3dev | version 2.0.0b1.</p>
+    <p>&#169; Copyright 2024 | s3dev | version 2.0.1.dev1.</p>
   </div>
 
    

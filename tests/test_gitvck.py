@@ -91,6 +91,11 @@ class TestGitVCK(TestBase):
             *this project*, and references the *installed* version of
             ``gitvck``. These may (in some testing cases) be out of sync.
 
+        .. tip::
+
+            It might be helpful to build this version and install
+            (locally) before proceeding with this test.
+
         """
         path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
         tst = gitvck.VersionCheck(name='gitvck',
@@ -99,7 +104,31 @@ class TestGitVCK(TestBase):
                                   version=None).test()
         self.assertTrue(tst, msg=self._MSG1.format(True, tst))
 
-    def test03a__test_git_w_version(self):
+    def test02c__test_git_invalid_path(self):
+        """Test the ``test`` method for a local Git source with an
+        invalid path.
+
+        :Test:
+            - Test the git source with an known invalid path.
+            - Verify the test returns False.
+            - Verify the expected messages are displayed to the terminal.
+
+        """
+        buf = io.StringIO()
+        lib = 'gitvck'
+        path = '/invalid/path'
+        with contextlib.redirect_stdout(buf):
+            tst1 = gitvck.VersionCheck(name=lib,
+                                       source='git',
+                                       path=path,
+                                       version=None).test()
+            text = buf.getvalue()
+        # Clean stdout and split the text into lines.
+        tst2 = list(filter(None, ''.join(self.strip_ansi_colour(text)).split('\n')))
+        self.assertFalse(tst1, msg=self._MSG1.format(False, tst1))
+        self.assertIn(f'external version for \'{lib}\' could not be found', tst2[1])
+
+    def test03a__test_github_w_version(self):
         """Test the ``test`` method for a GitHub source.
 
         :Test:
@@ -113,7 +142,7 @@ class TestGitVCK(TestBase):
                                   version='99.99.99').test()
         self.assertTrue(tst, msg=self._MSG1.format(True, tst))
 
-    def test03b__test_git_wo_version(self):
+    def test03b__test_github_wo_version(self):
         """Test the ``test`` method for a GitHub source.
 
         :Test:
@@ -257,7 +286,7 @@ class TestGitVCK(TestBase):
         vc = gitvck.VersionCheck(name='gitvck',
                                  source='pypi',
                                  version=None)
-        tst = vc._version_is_valid('1.2.3')
+        tst = vc._verify_version_is_valid('1.2.3')
         self.assertTrue(tst, msg=self._MSG1.format(True, tst))
 
     def test08b___version_is_valid__invalid(self):
@@ -275,7 +304,7 @@ class TestGitVCK(TestBase):
             vc = gitvck.VersionCheck(name='gitvck',
                                      source='pypi',
                                      version=None)
-            tst1 = vc._version_is_valid('1.abc.1')
+            tst1 = vc._verify_version_is_valid('1.abc.1')
             text = buf.getvalue()
         # Clean stdout and split the text into lines.
         tst2 = list(filter(None, ''.join(self.strip_ansi_colour(text)).split('\n')))

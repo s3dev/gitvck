@@ -103,11 +103,13 @@
 """
 # pylint: disable=wrong-import-order
 
+import os
 import packaging.version as pkgversion  # Required to address packaging import 'bug'.
 import requests
 import subprocess as sp
 import traceback
 from importlib import metadata
+from urllib.parse import urlparse
 from utils4.user_interface import ui
 
 
@@ -239,13 +241,14 @@ class VersionCheck:
             *tag*, and follows the versioning scheme found in PEP-440.
 
         """
-        cmd = ['git', 'ls-remote', '--tags', '--refs', '--sort=version:refname', self._path]
-        with sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE) as proc:
-            stdout, stderr = proc.communicate()
-            if not proc.returncode:
-                self._parse_git_output(data=stdout)
-            else:
-                ui.print_warning(f'\nGit error:\n{stderr.decode()}')
+        if self._verify_path_is_valid():
+            cmd = ['git', 'ls-remote', '--tags', '--refs', '--sort=version:refname', self._path]
+            with sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE) as proc:
+                stdout, stderr = proc.communicate()
+                if not proc.returncode:
+                    self._parse_git_output(data=stdout)
+                else:
+                    ui.print_warning(f'\nGit error:\n{stderr.decode()}')
 
     def _get_version_from_pypi(self):
         """Collect and parse the latest tag from PyPI.
@@ -279,7 +282,7 @@ class VersionCheck:
         if self._vers is None:
             try:
                 v = metadata.version(self._name)
-                if self._version_is_valid(version=v):
+                if self._verify_version_is_valid(version=v):
                     self._vers = v
             except metadata.PackageNotFoundError:
                 msg = (f'\n[ERROR]: The \'{self._name}\' project is not installed. '
@@ -340,6 +343,23 @@ class VersionCheck:
             raise RuntimeError('A path argument must be provided for a \'git\' source.')
         return True
 
+    def _verify_path_is_valid(self) -> bool:
+        """Verify the ``path`` argument is valid.
+
+        Returns:
+            bool: True if the path is a valid URL, or if the filepath
+            exists. Otherwise, False.
+
+        """
+        p = urlparse(self._path)
+        if p.scheme in ('http', 'https') and p.netloc == 'github.com':
+            return True
+        if os.path.exists(self._path):
+            return True
+        msg = f'\n[ERROR]: The following path cannot be found: \'{self._path}\''
+        ui.print_warning(msg)
+        return False
+
     def _verify_version_numbers(self) -> bool:
         """Verify the version numbers are valid according to PEP-440.
 
@@ -350,11 +370,10 @@ class VersionCheck:
             False.
 
         """
-        return all((self._version_is_valid(version=self._vers),
-                    self._version_is_valid(version=self._extvers)))
+        return all(map(self._verify_version_is_valid, (self._vers, self._extvers)))
 
     @staticmethod
-    def _version_is_valid(version: str) -> bool:
+    def _verify_version_is_valid(version: str) -> bool:
         """Verify a version string is valid.
 
         :Implementation:

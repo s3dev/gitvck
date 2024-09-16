@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gitvck &mdash; gitvck - v2.0.0b1 Documentation</title>
+  <title>gitvck &mdash; gitvck - v2.0.1.dev1 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -17,7 +17,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=b8f64aa8"></script>
+        <script src="_static/documentation_options.js?v=feb8027d"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -42,7 +42,7 @@
               <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                2.0.0b1
+                2.0.1.dev1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -66,8 +66,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._new_version_available"><code class="docutils literal notranslate"><span class="pre">VersionCheck._new_version_available()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._parse_git_output"><code class="docutils literal notranslate"><span class="pre">VersionCheck._parse_git_output()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._verify_args"><code class="docutils literal notranslate"><span class="pre">VersionCheck._verify_args()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._verify_path_is_valid"><code class="docutils literal notranslate"><span class="pre">VersionCheck._verify_path_is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._verify_version_is_valid"><code class="docutils literal notranslate"><span class="pre">VersionCheck._verify_version_is_valid()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._verify_version_numbers"><code class="docutils literal notranslate"><span class="pre">VersionCheck._verify_version_numbers()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck._version_is_valid"><code class="docutils literal notranslate"><span class="pre">VersionCheck._version_is_valid()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gitvck.VersionCheck.test"><code class="docutils literal notranslate"><span class="pre">VersionCheck.test()</span></code></a></li>
 </ul>
 </li>
@@ -385,14 +386,13 @@ RuntimeError is raised.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="gitvck.VersionCheck._verify_version_numbers">
-<span class="sig-name descname"><span class="pre">_verify_version_numbers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._verify_version_numbers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._verify_version_numbers" title="Link to this definition"></a></dt>
-<dd><p>Verify the version numbers are valid according to PEP-440.</p>
-<p>Both the internal and external version numbers are tested.</p>
+<dt class="sig sig-object py" id="gitvck.VersionCheck._verify_path_is_valid">
+<span class="sig-name descname"><span class="pre">_verify_path_is_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._verify_path_is_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._verify_path_is_valid" title="Link to this definition"></a></dt>
+<dd><p>Verify the <code class="docutils literal notranslate"><span class="pre">path</span></code> argument is valid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>True if <em>both</em> version numbers are valid, otherwise
-False.</p>
+<dd class="field-odd"><p>True if the path is a valid URL, or if the filepath
+exists. Otherwise, False.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
@@ -401,8 +401,8 @@ False.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="gitvck.VersionCheck._version_is_valid">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_version_is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._version_is_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._version_is_valid" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="gitvck.VersionCheck._verify_version_is_valid">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_verify_version_is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._verify_version_is_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._verify_version_is_valid" title="Link to this definition"></a></dt>
 <dd><p>Verify a version string is valid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Implementation<span class="colon">:</span></dt>
@@ -415,6 +415,22 @@ string.</p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>True if the version string is valid, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gitvck.VersionCheck._verify_version_numbers">
+<span class="sig-name descname"><span class="pre">_verify_version_numbers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/gitvck.html#VersionCheck._verify_version_numbers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gitvck.VersionCheck._verify_version_numbers" title="Link to this definition"></a></dt>
+<dd><p>Verify the version numbers are valid according to PEP-440.</p>
+<p>Both the internal and external version numbers are tested.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if <em>both</em> version numbers are valid, otherwise
+False.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
@@ -468,7 +484,7 @@ The return value is used by the testing suite.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024 | s3dev | version 2.0.0b1.</p>
+    <p>&#169; Copyright 2024 | s3dev | version 2.0.1.dev1.</p>
   </div>
 
    
