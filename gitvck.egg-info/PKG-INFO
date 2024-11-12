@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: gitvck
-Version: 2.1.0
+Version: 2.1.1
 Summary: A way to ensure critical libraries are up-to-date.
 Author-email: The Developers <development@s3dev.uk>
 Maintainer-email: The Developers <development@s3dev.uk>
@@ -29,7 +29,7 @@ Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: packaging
 Requires-Dist: requests
-Requires-Dist: utils4>=2.0.0
+Requires-Dist: utils4>=1.5.0
 
 
 # A way to ensure critical libraries are up-to-date
