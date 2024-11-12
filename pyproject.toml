@@ -8,7 +8,7 @@ description = "A way to ensure critical libraries are up-to-date."
 authors = [{name = "The Developers", email = "development@s3dev.uk"}]
 maintainers = [{name = "The Developers", email = "development@s3dev.uk"}]
 classifiers = [
-               "Development Status :: 4 - Beta",
+               "Development Status :: 5 - Production/Stable",
                "Intended Audience :: Developers",
                "License :: OSI Approved :: MIT License",
                "Operating System :: POSIX :: Linux",
@@ -24,7 +24,11 @@ classifiers = [
                "Topic :: Software Development :: Libraries",
                "Topic :: Utilities",
               ]
-dependencies = ["packaging", "requests", "utils4"]
+dependencies = [
+                "packaging", 
+                "requests", 
+                "utils4>=2.0.0",
+               ]
 dynamic = ["version"]
 keywords = ["library", "utility", "utilities", "version"]
 license = {text = "MIT"}

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: gitvck
-Version: 2.0.1rc1
+Version: 2.0.1
 Summary: A way to ensure critical libraries are up-to-date.
 Author-email: The Developers <development@s3dev.uk>
 Maintainer-email: The Developers <development@s3dev.uk>
@@ -9,7 +9,7 @@ Project-URL: Documentation, https://gitvck.readthedocs.io
 Project-URL: Homepage, https://github.com/s3dev/gitvck
 Project-URL: Repository, https://github.com/s3dev/gitvck
 Keywords: library,utility,utilities,version
-Classifier: Development Status :: 4 - Beta
+Classifier: Development Status :: 5 - Production/Stable
 Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: POSIX :: Linux
@@ -29,7 +29,7 @@ Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: packaging
 Requires-Dist: requests
-Requires-Dist: utils4
+Requires-Dist: utils4>=2.0.0
 
 
 # A way to ensure critical libraries are up-to-date
