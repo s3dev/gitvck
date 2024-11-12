@@ -128,6 +128,31 @@ class TestGitVCK(TestBase):
         self.assertFalse(tst1, msg=self._MSG1.format(False, tst1))
         self.assertIn(f'external version for \'{lib}\' could not be found', tst2[1])
 
+    def test02d__test_git_invalid_path__errs_suppressed(self):
+        """Test the ``test`` method for a local Git source with an
+        invalid path, with the error messages suppressed.
+
+        :Test:
+            - Test the git source with an known invalid path and the
+              error messages suppressed.
+            - Verify the test returns False.
+            - Verify the messages are *not* displayed to the terminal.
+
+        """
+        buf = io.StringIO()
+        lib = 'gitvck'
+        path = '/invalid/path'
+        with contextlib.redirect_stdout(buf):
+            tst1 = gitvck.VersionCheck(name=lib,
+                                       source='git',
+                                       path=path,
+                                       version=None,
+                                        suppress_path_not_found_errors=True).test()
+            text = buf.getvalue()
+        tst2 = text  # No need to clean the output.
+        self.assertFalse(tst1, msg=self._MSG1.format(False, tst1))
+        self.assertEqual(tst2, '')
+
     def test03a__test_github_w_version(self):
         """Test the ``test`` method for a GitHub source.
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Change Log &mdash; gitvck - v2.0.1 Documentation</title>
+  <title>Change Log &mdash; gitvck - v2.1.0 Documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -17,7 +17,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=bf575e9c"></script>
+        <script src="_static/documentation_options.js?v=c95eb2c2"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -42,7 +42,7 @@
               <img src="_static/s3dev_tri_white_sm.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                2.0.1
+                2.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -84,6 +84,21 @@
   <section id="module-changelog">
 <span id="change-log"></span><h1>Change Log<a class="headerlink" href="#module-changelog" title="Link to this heading"></a></h1>
 <ul>
+<li><p><strong>2.1.0 - Introduced path not found error message suppression.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2024-11-12 10:20:42</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GVCK</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">Path</span> <span class="ow">not</span> <span class="n">found</span> <span class="n">errors</span>
+<span class="o">-</span> <span class="n">Added</span> <span class="n">an</span> <span class="n">argument</span> <span class="n">to</span> <span class="n">the</span> <span class="n">VersionCheck</span> <span class="k">class</span> <span class="nc">enabling</span> <span class="n">an</span> <span class="n">application</span> <span class="n">to</span>
+  <span class="n">suppress</span> <span class="n">the</span> <span class="s1">&#39;path not found&#39;</span> <span class="n">errors</span><span class="o">.</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">helpful</span> <span class="k">if</span> <span class="n">there</span> <span class="n">are</span>
+  <span class="p">[</span><span class="n">development</span><span class="p">]</span> <span class="n">environments</span> <span class="ow">in</span> <span class="n">which</span> <span class="n">the</span> <span class="n">path</span> <span class="ow">is</span> <span class="n">expected</span> <span class="n">to</span> <span class="ow">not</span> <span class="n">be</span>
+  <span class="n">found</span><span class="o">.</span>
+
+<span class="n">Testing</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">All</span> <span class="n">tests</span> <span class="n">complete</span> <span class="n">successfully</span> <span class="k">with</span> <span class="mi">100</span><span class="o">%</span> <span class="n">code</span> <span class="n">coverage</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">Pylintr</span> <span class="n">completes</span> <span class="n">successfully</span> <span class="k">with</span> <span class="nb">all</span> <span class="n">modules</span> <span class="n">reporting</span> <span class="mi">10</span><span class="o">/</span><span class="mf">10.</span>
+
+<span class="n">Released</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">12</span>
+</pre></div>
+</div>
+</li>
 <li><p><strong>2.0.1 - Production release for version 2.0.1rc1.</strong><span> by </span><em>j_berendt</em><span> at </span><em>2024-11-12 09:48:14</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Released</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">12</span>
 </pre></div>
@@ -167,7 +182,7 @@ Released: ?
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024 | s3dev | version 2.0.1.</p>
+    <p>&#169; Copyright 2024 | s3dev | version 2.1.0.</p>
   </div>
 
    

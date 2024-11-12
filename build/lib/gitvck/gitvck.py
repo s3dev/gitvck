@@ -131,6 +131,9 @@ class VersionCheck:
             this argument should be left as ``None``. Otherwise, the
             ``__version__`` variable from the project's ``_version.py``
             file can be used. Defaults to None.
+        suppress_path_not_found_errors (bool, optional): Suppress the
+            error messages indicating a repo or path cannot be found.
+            Defaults to False.
 
     .. note::
 
@@ -143,13 +146,19 @@ class VersionCheck:
 
     _SOURCES = ('git', 'pypi')
 
-    def __init__(self, name: str, source: str, path: str=None, version: str=None):
+    def __init__(self,
+                 name: str,
+                 source: str,
+                 path: str=None,
+                 version: str=None,
+                 suppress_path_not_found_errors: bool=False):
         """VersionCheck class initialiser."""
         self._name = name
         self._src = source.lower()
         self._path = path
         self._vers = version  # Project version.
         self._extvers = None  # Version obtained from Git or PyPI.
+        self._show_errs = not suppress_path_not_found_errors
 
     def test(self) -> bool:
         """Test the version numbers between the library and its source.
@@ -225,8 +234,9 @@ class VersionCheck:
         elif self._src == 'pypi':
             self._get_version_from_pypi()
         if self._extvers is None:
-            msg = f'\n[ERROR]: The external version for \'{self._name}\' could not be found.'
-            ui.print_warning(msg)
+            if self._show_errs:
+                msg = f'\n[ERROR]: The external version for \'{self._name}\' could not be found.'
+                ui.print_warning(msg)
             return False
         return True
 
@@ -356,8 +366,9 @@ class VersionCheck:
             return True
         if os.path.exists(self._path):
             return True
-        msg = f'\n[ERROR]: The following path cannot be found: \'{self._path}\''
-        ui.print_warning(msg)
+        if self._show_errs:
+            msg = f'\n[ERROR]: The following path cannot be found: \'{self._path}\''
+            ui.print_warning(msg)
         return False
 
     def _verify_version_numbers(self) -> bool:
